@@ -1,0 +1,83 @@
+@use "./../variables/one" as *;
+@import "../fonts/fonts";
+@import "../../css/test";
+@import "./mixins";
+// root element
+:root {
+  --font_one: "Oleo Script Swash Caps", cursive;
+  --main_color: "#86b61f";
+}
+// padding class
+@for $i from 1 through 6 {
+  .sh-p-#{$i * 5} {
+    padding: #{$i * 5}px;
+  }
+}
+// margin class
+@for $i from 1 through 6 {
+  .sh-m-#{$i * 5} {
+    margin: #{$i * 5}px;
+  }
+}
+@for $i from 1 through 10 {
+  .sh-w-#{$i * 10} {
+    width: #{$i * 10}#{"%"};
+  }
+}
+// circule class
+@for $i from 1 through 6 {
+  .sh-circle-#{$i * 5} {
+    @include shebl-circle(#{$i * 5}px);
+  }
+}
+.shebl-before-up {
+  &::before {
+    position: absolute;
+    content: attr(content-text);
+    inset: 0;
+    top: 0px;
+    left: 0px;
+    background: #e84f478a;
+    top: 110%;
+    transition: 0.7s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: white;
+    font-style: italic;
+    width: calc(100% - 24px);
+    left: 12px;
+    border-radius: 5px;
+  }
+  &:hover::before {
+    top: 0px;
+  }
+}
+
+// media query for width and height
+$var_class: "width" "%" "sh-w", "height" "%" "sh-h", "padding" "px" "sh-p";
+@each $pro, $tool, $var in $var_class {
+  @for $num from 1 through 10 {
+    .#{$var}-m-#{$num * 10} {
+      @include breakpoints(mobile) {
+        #{$pro}: #{$num * 10}#{$tool};
+      }
+    }
+    .#{$var}-sm-#{$num * 10} {
+      @include breakpoints(small) {
+        #{$pro}: #{$num * 10}#{$tool};
+      }
+    }
+    .#{$var}-md-#{$num * 10} {
+      @include breakpoints(medium) {
+        #{$pro}: #{$num * 10}#{$tool};
+      }
+    }
+    .#{$var}-lg-#{$num * 10} {
+      @include breakpoints(large) {
+        #{$pro}: #{$num * 10}#{$tool};
+      }
+    }
+  }
+}
