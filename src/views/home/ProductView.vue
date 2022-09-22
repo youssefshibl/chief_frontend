@@ -198,6 +198,7 @@ export default {
                             }`);
       if ("data" in response.data) {
         this.product.data = response.data.data.menu;
+        document.querySelector('[data-bs-toggle="offcanvas"]').click();
       }
     },
     inc_order() {

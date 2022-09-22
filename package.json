@@ -20,6 +20,8 @@
     "core-js": "^3.8.3",
     "jquery": "^3.6.1",
     "popper.js": "^1.16.1",
+    "sweetalert2": "^11.4.33",
+    "v-pagination-3": "^0.1.7",
     "vue": "^3.2.13",
     "vue-i18n": "^9.2.2",
     "vue-router": "^4.0.3",

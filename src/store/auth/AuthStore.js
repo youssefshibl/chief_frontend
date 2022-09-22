@@ -3,6 +3,8 @@ const ModuleAuth = {
     user: {},
     isauth: false,
     theredata: false,
+    isverified: false,
+    address: [],
   },
   getters: {
     checkuserdata(state) {
@@ -14,8 +16,17 @@ const ModuleAuth = {
     getuserdata(state) {
       return state.user;
     },
+    get_verified_state(state) {
+      return state.isverified;
+    },
+    get_address(state) {
+      return state.address;
+    },
   },
   mutations: {
+    set_isverified(state) {
+      state.isverified = true;
+    },
     beauth(state) {
       state.isauth = true;
     },
@@ -27,6 +38,9 @@ const ModuleAuth = {
     },
     theredata(state) {
       state.theredata = true;
+    },
+    set_address(state, data) {
+      state.address = data;
     },
   },
   actions: {},

@@ -111,7 +111,7 @@
       <div class="container">
         <div class="menu-elements">
           <div
-            v-for="element in datamenu"
+            v-for="element in datamenu_after_pag"
             :key="element.id"
             class="card m-3 card-element"
             style="width: 18rem"
@@ -171,6 +171,17 @@
         </div>
       </div>
     </div>
+    <div v-if="menu.data.length != 0" class="pagination-box">
+      <div class="container">
+        <div class="mx-auto pagination-box-fit">
+          <pagination
+            v-model="menu.pagination.currentpage"
+            :records="datamenu.length"
+            :per-page="menu.pagination.numberinpage"
+          />
+        </div>
+      </div>
+    </div>
     <ElementBag />
   </div>
 </template>
@@ -180,6 +191,7 @@ import NavBar from "@/components/layout/NavBar.vue";
 import Endpoint from "@/lib/endpoint/main";
 import ElementBag from "@/components/small/ElementBag.vue";
 import Scripts from "@/core/scripts/Scripts";
+import Pagination from "v-pagination-3";
 export default {
   data() {
     return {
@@ -195,12 +207,17 @@ export default {
             to: 500,
           },
         },
+        pagination: {
+          numberinpage: 5,
+          currentpage: 1,
+        },
       },
     };
   },
   components: {
     NavBar,
     ElementBag,
+    Pagination,
   },
   methods: {
     async get_menu_data() {
@@ -259,6 +276,7 @@ export default {
             title: "Add to card Sucess",
           });
           this.$store.commit("set_new_order", response.data.data.CreateOrder);
+          document.querySelector('[data-bs-toggle="offcanvas"]').click();
         }
       } else {
         this.$toastMixin.fire({
@@ -279,6 +297,7 @@ export default {
     },
   },
   async mounted() {
+    Scripts.animationloading(false);
     this.get_menu_data();
   },
   computed: {
@@ -295,8 +314,22 @@ export default {
           price_filter
         );
       });
-      return filterd_data;
+      return filterd_data.slice();
     },
+    datamenu_after_pag() {
+      let data_filtered_length = this.datamenu.length;
+      if (data_filtered_length < this.menu.pagination.numberinpage) {
+        return this.datamenu.slice(0, data_filtered_length);
+      }
+      let to =
+        this.menu.pagination.currentpage * this.menu.pagination.numberinpage;
+      let from = to - this.menu.pagination.numberinpage;
+      return this.datamenu.slice(from, to);
+    },
+  },
+
+  beforeMount() {
+    Scripts.animationloading(true);
   },
 };
 </script>
@@ -325,7 +358,8 @@ export default {
   height: calc(50vh - 76px);
 }
 .menufilter,
-.menubody {
+.menubody,
+.pagination-box {
   background-color: #f5f7f9;
 }
 .menu-elements {
@@ -339,5 +373,8 @@ export default {
 }
 .image-card-plachoder {
   filter: blur(7px);
+}
+.pagination-box-fit {
+  width: fit-content;
 }
 </style>

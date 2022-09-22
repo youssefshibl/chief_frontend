@@ -13,7 +13,7 @@ const master = {
     } else {
       setTimeout(() => {
         document.querySelector(".animationloading ").style.display = "none";
-      }, 500);
+      }, 1000);
     }
   },
 };

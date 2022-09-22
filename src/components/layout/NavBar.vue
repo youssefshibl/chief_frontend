@@ -3,10 +3,13 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg pt-2 text-light">
         <div class="container-fluid">
-          <a class="navbar-brand logo d-flex align-items-center" href="#">
+          <router-link
+            to="/home"
+            class="navbar-brand logo d-flex align-items-center"
+          >
             <img src="@/assets/logo1.png" alt="" />
             <h4 class="text-light p-1">{{ $t("message.hello") }}</h4>
-          </a>
+          </router-link>
           <button
             class="navbar-toggler text-light border-1 rounded border-light"
             type="button"

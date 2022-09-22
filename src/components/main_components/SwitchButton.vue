@@ -94,13 +94,13 @@ export default {
 .toggle__button .toggle__switch.notactive::before {
   background: #4d4d4d;
   box-shadow: 0 0 1px #666;
-  left: 0px;
+  left: -2px;
   right: 22px;
 }
 .toggle__button .toggle__switch.active::before {
   background: #86b61f;
   box-shadow: 0 0 1px #86b61f6e;
-  left: 22px;
+  left: 25px;
   right: 0px;
 }
 </style>

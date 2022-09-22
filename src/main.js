@@ -22,6 +22,7 @@ import "bootstrap/dist/js/bootstrap.min.js";
 // install vuesweetalert library
 import VueSweetalert2 from "vue-sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
+// sweetalert for toastmixin short hand
 import Swal from "sweetalert2";
 window.Swal = Swal;
 let toastMixin = Swal.mixin({

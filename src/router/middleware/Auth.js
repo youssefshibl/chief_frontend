@@ -11,7 +11,15 @@ const beforeeach = async function (to, from, next) {
       store.commit("SetUser", is_auth.data.user);
       store.commit("beauth");
       store.commit("theredata");
+      if (is_auth.data.verified != null) {
+        store.commit("set_isverified");
+      }
+    } else {
+      if (is_auth.verified != null) {
+        store.commit("set_isverified");
+      }
     }
+    //console.log(is_auth);
 
     next();
   } else if (!is_auth.status) {

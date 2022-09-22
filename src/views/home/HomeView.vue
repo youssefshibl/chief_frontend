@@ -26,7 +26,7 @@
     </div>
     <div class="main-title" ref="joo">
       <div class="container" data-aos="fade-up" data-aos-duration="1000">
-        <div class="commont-part">
+        <div class="commont-part text-center">
           <div class="col col-md-6 mx-auto">
             <img src="@/assets/image1.png" class="w-50" alt="" />
           </div>
@@ -237,7 +237,7 @@
     </div>
     <div class="type-section pb-5">
       <div class="container" data-aos="zoom-in-down" data-aos-duration="1000">
-        <div class="commont-part">
+        <div class="commont-part text-center">
           <div class="col col-md-6 mx-auto">
             <img src="@/assets/logo1.png" class="w-50" alt="" />
           </div>
@@ -360,6 +360,7 @@ import UsersSvg from "@/components/svg/UsersSvg.vue";
 import RatingSvg from "@/components/svg/RatingSvg.vue";
 import VistorSvg from "@/components/svg/VistorSvg.vue";
 import ElementBag from "@/components/small/ElementBag.vue";
+import script from "@/core/scripts/Scripts";
 
 export default {
   data() {
@@ -409,6 +410,12 @@ export default {
     VistorSvg,
     NavBar,
     ElementBag,
+  },
+  mounted() {
+    script.animationloading(false);
+  },
+  beforeMount() {
+    script.animationloading(true);
   },
 };
 </script>

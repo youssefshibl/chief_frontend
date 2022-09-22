@@ -69,5 +69,6 @@ export default [
     path: "/checkout",
     name: "checkout",
     component: () => import("../../views/home/CheckoutView.vue"),
+    beforeEnter: multiguard([auth_middle]),
   },
 ];

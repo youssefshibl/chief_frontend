@@ -145,12 +145,16 @@
             type="button"
             class="btn btn-danger my-2 d-block sh-w-80 mx-auto"
             @click="go_to_checkout"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
           >
             Checkout
           </button>
           <button
             type="button"
             class="btn btn-secondary my-2 d-block sh-w-80 mx-auto"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
           >
             View card
           </button>
@@ -295,6 +299,7 @@ export default {
   background: transparent;
   border: none;
   width: 10%;
+  color: rgb(152, 152, 152);
 }
 .subtotal {
   display: flex;
