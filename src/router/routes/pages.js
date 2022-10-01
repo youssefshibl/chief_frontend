@@ -71,4 +71,22 @@ export default [
     component: () => import("../../views/home/CheckoutView.vue"),
     beforeEnter: multiguard([auth_middle]),
   },
+  {
+    path: "/orders",
+    name: "orders",
+    component: () => import("../../views/home/OrdersView.vue"),
+    beforeEnter: multiguard([auth_middle]),
+  },
+  {
+    path: "/address",
+    name: "address",
+    component: () => import("../../views/home/AddressView.vue"),
+    beforeEnter: multiguard([auth_middle]),
+  },
+  {
+    path: "/user",
+    name: "user",
+    component: () => import("../../views/home/UserView.vue"),
+    beforeEnter: multiguard([auth_middle]),
+  },
 ];

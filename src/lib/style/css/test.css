@@ -182,7 +182,7 @@ body .dribbble img {
 }
 
 .animationloading {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100vh;
   z-index: 2000;

@@ -222,7 +222,7 @@ body .dribbble img {
 }
 
 .animationloading {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100vh;
   z-index: 2000;
@@ -267,6 +267,179 @@ body .dribbble img {
 
 .colored-toast .swal2-html-container {
   color: white;
+}
+
+.placeholder-shebl {
+  -webkit-animation-name: placeholder-shebl;
+          animation-name: placeholder-shebl;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  border-radius: 3px;
+  opacity: 0.7;
+  margin: 10px;
+}
+
+@-webkit-keyframes placeholder-shebl {
+  0% {
+    background-color: hsl(200deg, 20%, 70%);
+  }
+  100% {
+    background-color: hsl(200deg, 20%, 95%);
+  }
+}
+
+@keyframes placeholder-shebl {
+  0% {
+    background-color: hsl(200deg, 20%, 70%);
+  }
+  100% {
+    background-color: hsl(200deg, 20%, 95%);
+  }
+}
+.placeholder-shebl.sh-w-10 {
+  width: 10%;
+}
+
+.placeholder-shebl.sh-w-20 {
+  width: 20%;
+}
+
+.placeholder-shebl.sh-w-30 {
+  width: 30%;
+}
+
+.placeholder-shebl.sh-w-40 {
+  width: 40%;
+}
+
+.placeholder-shebl.sh-w-50 {
+  width: 50%;
+}
+
+.placeholder-shebl.sh-w-60 {
+  width: 60%;
+}
+
+.placeholder-shebl.sh-w-70 {
+  width: 70%;
+}
+
+.placeholder-shebl.sh-w-80 {
+  width: 80%;
+}
+
+.placeholder-shebl.sh-w-90 {
+  width: 90%;
+}
+
+.placeholder-shebl.sh-w-100 {
+  width: 100%;
+}
+
+.placeholder-shebl.sh-h-10 {
+  height: 10px;
+}
+
+.placeholder-shebl.sh-h-20 {
+  height: 20px;
+}
+
+.placeholder-shebl.sh-h-30 {
+  height: 30px;
+}
+
+.placeholder-shebl.sh-h-40 {
+  height: 40px;
+}
+
+.placeholder-shebl.sh-h-50 {
+  height: 50px;
+}
+
+.placeholder-shebl.sh-h-60 {
+  height: 60px;
+}
+
+.placeholder-shebl.sh-h-70 {
+  height: 70px;
+}
+
+.placeholder-shebl.sh-h-80 {
+  height: 80px;
+}
+
+.placeholder-shebl.sh-h-90 {
+  height: 90px;
+}
+
+.placeholder-shebl.sh-h-100 {
+  height: 100px;
+}
+
+.placeholder-shebl.sh-c-10 {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.placeholder-shebl.sh-c-20 {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.placeholder-shebl.sh-c-30 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.placeholder-shebl.sh-c-40 {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.placeholder-shebl.sh-c-50 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.placeholder-shebl.sh-c-60 {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.placeholder-shebl.sh-c-70 {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.placeholder-shebl.sh-c-80 {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.placeholder-shebl.sh-c-90 {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+
+.placeholder-shebl.sh-c-100 {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 
 :root {

@@ -27,11 +27,11 @@
           >
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item p-1 fs-5 me-1">
-                <a
+                <router-link
                   class="nav-link active text-capitalize text-light"
                   aria-current="page"
-                  href="#"
-                  >{{ $t("message.home") }}</a
+                  to="/home"
+                  >{{ $t("message.home") }}</router-link
                 >
               </li>
               <li class="nav-item p-1 fs-5 me-1">
@@ -86,9 +86,22 @@
                 {{ $store.getters.getuserdata.name }}
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
                 <li>
-                  <a class="dropdown-item" href="#">Another action</a>
+                  <router-link class="dropdown-item text-secondary" to="/orders"
+                    >orders</router-link
+                  >
+                </li>
+                <li>
+                  <router-link
+                    to="/address"
+                    class="dropdown-item text-secondary"
+                    >address</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/user" class="dropdown-item text-secondary"
+                    >setting</router-link
+                  >
                 </li>
                 <li><hr class="dropdown-divider" /></li>
                 <li @click="logout">

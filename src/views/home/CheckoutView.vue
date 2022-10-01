@@ -40,24 +40,6 @@
                 </div>
                 <h4 class="step-title" data-v-07a1f031="">Quality Check</h4>
               </div>
-              <div class="step step4" data-v-07a1f031="">
-                <div class="step-icon-wrap" data-v-07a1f031="">
-                  <div class="step-icon" data-v-07a1f031="">
-                    <i class="pe-7s-car" data-v-07a1f031=""></i>
-                  </div>
-                </div>
-                <h4 class="step-title" data-v-07a1f031="">
-                  Product Dispatched
-                </h4>
-              </div>
-              <div class="step step5" data-v-07a1f031="">
-                <div class="step-icon-wrap" data-v-07a1f031="">
-                  <div class="step-icon" data-v-07a1f031="">
-                    <i class="pe-7s-home" data-v-07a1f031=""></i>
-                  </div>
-                </div>
-                <h4 class="step-title" data-v-07a1f031="">Product Delivered</h4>
-              </div>
             </div>
           </div>
         </nav>
@@ -269,7 +251,7 @@
               </div>
               <div
                 class="stepone rounded p-4"
-                v-if="operation.current.number == 3"
+                v-show="operation.current.number == 3"
               >
                 <h4 class="text-center p-2 text-secondary">Payment</h4>
                 <div class="form-check p-2 ms-3">
@@ -311,9 +293,14 @@
                 </div>
                 <div class="collapse" id="collapseExample">
                   <div class="card card-body">
-                    Some placeholder content for the collapse component. This
-                    panel is hidden by default but revealed when the user
-                    activates the relevant trigger.
+                    <div class="pb-3">
+                      <div class="p-2 text-secondary">
+                        <h5>don't warry the card number not send to server</h5>
+                      </div>
+                      <div class="p-2 border rounded">
+                        <div id="card-element_payment"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="mt-3 mb-2 d-flex justify-content-between">
@@ -326,12 +313,19 @@
                     <i class="fa-solid fa-arrow-left-long"></i>
                   </button>
                   <button
-                    @click="operation_three(4)"
+                    @click="checkpayment"
                     type="button "
                     class="btn btn-primary"
                   >
-                    Next
-                    <i class="ms-2 fa-solid fa-arrow-right-long"></i>
+                    <span
+                      v-if="paymentProcessing"
+                      class="spinner-border spinner-border-sm me-2"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+
+                    <span v-text="paymentProcessing ? 'Processing' : 'Pay Now'">
+                    </span>
                   </button>
                 </div>
               </div>
@@ -348,10 +342,14 @@ import Endpoint from "@/lib/endpoint/main";
 import script from "@/core/scripts/Scripts";
 import AddressModal from "@/components/small/AddressModal";
 import AddressModalEdit from "@/components/small/AddressModalEdit";
-
+import { loadStripe } from "@stripe/stripe-js";
 export default {
   data() {
     return {
+      stripe: {},
+      cardElement: {},
+      customer: {},
+      paymentProcessing: false,
       orders: {
         placeholder: {
           number: 2,
@@ -461,6 +459,90 @@ export default {
         );
       }
     },
+    async checkpayment() {
+      if (this.operation.three.input) {
+        this.processPayment();
+      } else {
+        this.$toastMixin.fire({
+          icon: "error",
+          title: "choose your payment method",
+        });
+      }
+    },
+    async processPayment() {
+      this.paymentProcessing = true;
+      if (this.operation.three.input == "inhome") {
+        //
+        let response = await Endpoint.axiosIns.post("payment/payment_process", {
+          address_id: this.operation.two.input,
+          payment_method: "inhome",
+        });
+
+        if (response.data.status) {
+          this.paymentProcessing = false;
+          this.$toastMixin.fire({
+            icon: "success",
+            title: "ordar will reach to you soon ",
+          });
+          this.$router.push({
+            name: "orders",
+          });
+        } else {
+          this.paymentProcessing = false;
+          this.$toastMixin.fire({
+            icon: "error",
+            title: response.data.message,
+          });
+        }
+      } else if (this.operation.three.input == "visa") {
+        console.log("visa");
+        let user = this.$store.getters.getuserdata;
+        const { paymentMethod, error } = await this.stripe.createPaymentMethod(
+          "card",
+          this.cardElement,
+          {
+            billing_details: {
+              name: user.name,
+              email: user.email,
+            },
+          }
+        );
+        if (error) {
+          this.paymentProcessing = false;
+          console.error(error);
+          this.$toastMixin.fire({
+            icon: "error",
+            title: error.message,
+          });
+        } else {
+          let response = await Endpoint.axiosIns.post(
+            "payment/payment_process",
+            {
+              address_id: this.operation.two.input,
+              payment_method: "visa",
+              payment_method_id: paymentMethod.id,
+            }
+          );
+
+          if (response.data.status) {
+            this.paymentProcessing = false;
+            this.$toastMixin.fire({
+              icon: "success",
+              title: "ordar will reach to you soon ",
+            });
+            this.$router.push({
+              name: "orders",
+            });
+          } else {
+            this.paymentProcessing = false;
+            this.$toastMixin.fire({
+              icon: "error",
+              title: "sorry there are error unknown ",
+            });
+          }
+        }
+      }
+    },
   },
   async created() {
     let response = await Endpoint.gQl(
@@ -499,8 +581,22 @@ export default {
       this.orders.placeholder.is = false;
     }
   },
-  mounted() {
+  async mounted() {
     script.animationloading(false);
+    let stripe_key = (await Endpoint.axiosIns("payment/stripe_key")).data
+      .stripe_key;
+    this.stripe = await loadStripe(stripe_key);
+    var style = {
+      base: {
+        // Add your base input styles here. For example:
+        fontWeight: "500",
+        fontSize: "16px",
+        fontSmoothing: "antialiased",
+      },
+    };
+    const elements = this.stripe.elements();
+    this.cardElement = elements.create("card", { style: style });
+    this.cardElement.mount("#card-element_payment");
   },
   beforeMount() {
     script.animationloading(true);

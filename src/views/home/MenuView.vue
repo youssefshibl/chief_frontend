@@ -327,7 +327,6 @@ export default {
       return this.datamenu.slice(from, to);
     },
   },
-
   beforeMount() {
     Scripts.animationloading(true);
   },

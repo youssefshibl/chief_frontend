@@ -52,9 +52,9 @@
               aria-label="Default select example"
             >
               <option selected value="egypt">Egypt</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option value="one">One</option>
+              <option value="two">Two</option>
+              <option value="three">Three</option>
             </select>
           </div>
           <div class="mb-3">

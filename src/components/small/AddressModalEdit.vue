@@ -52,9 +52,9 @@
               aria-label="Default select example"
             >
               <option selected value="egypt">Egypt</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option value="one">One</option>
+              <option value="two">Two</option>
+              <option value="three">Three</option>
             </select>
           </div>
           <div class="mb-3">
@@ -156,13 +156,15 @@ export default {
             "set_address",
             response.data.data.EditAddress.address
           );
-          this.address.address = "";
-          this.address.country = "";
-          this.address.state = "";
-          this.address.phone = "";
-          this.address.postal_code = "";
         }
       }
+    },
+    addnew_data() {
+      this.address.address = this.current_address.adress;
+      this.address.country = this.current_address.country;
+      this.address.phone = this.current_address.phone;
+      this.address.state = this.current_address.state;
+      this.address.postal_code = this.current_address.Postal_Code;
     },
   },
   created() {

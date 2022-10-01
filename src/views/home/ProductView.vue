@@ -249,6 +249,10 @@ export default {
   },
   async beforeMount() {
     this.get_product_data();
+    Scripts.animationloading(true);
+  },
+  mounted() {
+    Scripts.animationloading(true);
   },
 };
 </script>

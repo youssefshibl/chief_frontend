@@ -1,6 +1,7 @@
 const ModuleOrders = {
   state: {
     orders: [],
+    ordercollection: [],
   },
   getters: {
     get_orders_num(state) {
@@ -31,6 +32,19 @@ const ModuleOrders = {
       });
       return mark;
     },
+    get_ordercollections(state) {
+      return state.ordercollection;
+    },
+    get_orders_num_in_ordercollectin: (state) => (id) => {
+      let orders = state.ordercollection.filter(function (item) {
+        return item.id == id;
+      });
+
+      let numbers = orders[0].orders.reduce(function (total, item) {
+        return total + Number(item.number);
+      }, 0);
+      return numbers;
+    },
   },
   mutations: {
     setorders(state, data) {
@@ -43,7 +57,6 @@ const ModuleOrders = {
         }
       });
     },
-
     delet_order(state, id) {
       state.orders = state.orders.filter(function (item) {
         return item.id != id;
@@ -69,6 +82,9 @@ const ModuleOrders = {
           item.number += n_order;
         }
       });
+    },
+    set_ordercollection(state, data) {
+      state.ordercollection = data;
     },
   },
   actions: {},
