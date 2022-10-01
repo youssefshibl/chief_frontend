@@ -307,4 +307,7 @@ form .icon-search {
     padding: 5px;
   }
 }
+.form-control {
+  width: 200px;
+}
 </style>

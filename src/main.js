@@ -62,3 +62,5 @@ app
   .use(i18n)
   .use(VueSweetalert2)
   .mount("#app");
+
+import "@/lib/notifications/main";

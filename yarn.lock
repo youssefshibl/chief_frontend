@@ -1664,6 +1664,11 @@
   "resolved" "https://registry.npmjs.org/@types/node/-/node-18.7.14.tgz"
   "version" "18.7.14"
 
+"@types/node@^14.14.31":
+  "integrity" "sha512-vQAnaReSQkEDa8uwAyQby8bYGKu84R/deEc6mg5T8fX6gzCn8QW6rziSgsti1fNvsrswKUKPnVTi7uoB+u62Mw=="
+  "resolved" "https://registry.npmjs.org/@types/node/-/node-14.18.31.tgz"
+  "version" "14.18.31"
+
 "@types/normalize-package-data@^2.4.0":
   "integrity" "sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw=="
   "resolved" "https://registry.npmjs.org/@types/normalize-package-data/-/normalize-package-data-2.4.1.tgz"
@@ -5480,6 +5485,11 @@
   "resolved" "https://registry.npmjs.org/klona/-/klona-2.0.5.tgz"
   "version" "2.0.5"
 
+"laravel-echo@^1.14.0":
+  "integrity" "sha512-5tirx4TKZjyySIUgr3HKnimpVOmdOUdcFamuzNxF2dSftGC5fY1bpGhjOHzBKqHL/XzMRiWQO1FItrvp3iipmw=="
+  "resolved" "https://registry.npmjs.org/laravel-echo/-/laravel-echo-1.14.0.tgz"
+  "version" "1.14.0"
+
 "launch-editor-middleware@^2.2.1":
   "integrity" "sha512-K2yxgljj5TdCeRN1lBtO3/J26+AIDDDw+04y6VAiZbWcTdBwsYN6RrZBnW5DN/QiSIdKNjKdATLUUluWWFYTIA=="
   "resolved" "https://registry.npmjs.org/launch-editor-middleware/-/launch-editor-middleware-2.6.0.tgz"
@@ -6638,6 +6648,14 @@
   "resolved" "https://registry.npmjs.org/punycode/-/punycode-2.1.1.tgz"
   "version" "2.1.1"
 
+"pusher-js@^7.4.0":
+  "integrity" "sha512-4ewETSlJEdRZ2eHGEMH3pHxMVB+sB4oMmOWbgYbSRsYbTFPOpRBumSEm9NSNse3pfjiluTrB98PaXijJ6BL3lg=="
+  "resolved" "https://registry.npmjs.org/pusher-js/-/pusher-js-7.4.0.tgz"
+  "version" "7.4.0"
+  dependencies:
+    "@types/node" "^14.14.31"
+    "tweetnacl" "^1.0.3"
+
 "qs@6.10.3":
   "integrity" "sha512-wr7M2E0OFRfIfJZjKGieI8lBKb7fRCH4Fv5KNPEs7gJ8jadvotdsS08PzOKR7opXhZ/Xkjtt3WF9g38drmyRqQ=="
   "resolved" "https://registry.npmjs.org/qs/-/qs-6.10.3.tgz"
@@ -7652,6 +7670,11 @@
   "integrity" "sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ=="
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.4.0.tgz"
   "version" "2.4.0"
+
+"tweetnacl@^1.0.3":
+  "integrity" "sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw=="
+  "resolved" "https://registry.npmjs.org/tweetnacl/-/tweetnacl-1.0.3.tgz"
+  "version" "1.0.3"
 
 "type-check@^0.4.0":
   "integrity" "sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew=="

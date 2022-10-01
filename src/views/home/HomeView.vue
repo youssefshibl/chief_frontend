@@ -350,6 +350,42 @@
         </div>
       </div>
     </div>
+    <div class="footer-bar p-2">
+      <div class="container">
+        <div class="box-footer py-3 row align-items-center">
+          <div class="col-12 col-md-2 d-flex align-items-center">
+            <div class="box-img">
+              <img src="@/assets/logo1.png" alt="" />
+            </div>
+            <h4 class="ms-2">{{ $t("message.hello") }}</h4>
+          </div>
+          <div class="col-12 col-md-2 text-center">
+            <h5>Home</h5>
+          </div>
+          <div class="col-12 col-md-2 text-center">
+            <h5>Contact us</h5>
+          </div>
+          <div class="col-12 col-md-2 text-center">
+            <h5><i class="fa-brands fa-facebook-f text-primary fs-1"></i></h5>
+          </div>
+          <div class="col-12 col-md-2 text-center">
+            <h5><i class="fa-brands fa-whatsapp text-success fs-1"></i></h5>
+          </div>
+          <div class="col-12 col-md-2 text-center">
+            <h5>
+              <i class="fa-solid fa-map-location-dot text-danger fs-1"></i>
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copyrint bg-secondary text-light">
+      <div class="contaienr">
+        <div class="text-center p-2">
+          <h5>Copyright © 2022 chief by YoussefShebl. All Rights Reserved</h5>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -464,7 +500,9 @@ export default {
 .card-info {
   background: #86b61f;
 }
-.information {
+.information,
+.footer-bar,
+.copyrint {
   font-family: "Sansita", sans-serif;
 }
 .images-part {
@@ -565,5 +603,17 @@ li {
 }
 .box-user {
   font-family: "Sansita", sans-serif;
+}
+.box-footer .box-img {
+  width: 50px;
+  height: 50px;
+}
+.box-footer .box-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.footer-bar {
+  background: #f5f7f9;
 }
 </style>
