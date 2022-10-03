@@ -7,7 +7,7 @@
         <div class="container">
           <div class="home-text text-center text-md-start p-5">
             <h4 class="text-capitalize fs-1 pb-2 text-light">
-              {{ $t("message. title_1") }}
+              {{ $t("message.title_1") }}
             </h4>
             <div
               class="btn btr-light bg-light text-capitalize px-5 fs-5 mb-3 rounded-pill"
