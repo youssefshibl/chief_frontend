@@ -136,7 +136,7 @@
               </button>
             </div>
           </div>
-          <template v-if="menu.data.length == 0">
+          <template v-if="menu.style.plachodervisibility">
             <div
               v-for="n in menu.style.placeholdersnumbers"
               :key="n"
@@ -199,6 +199,7 @@ export default {
         data: [],
         style: {
           placeholdersnumbers: 9,
+          plachodervisibility: true,
         },
         filter: {
           category: "all",
@@ -221,9 +222,10 @@ export default {
   },
   methods: {
     async get_menu_data() {
+      let search = this.$route.params.name;
       let response = await Endpoint.gQl(
         `{
-                        menus {
+                        menusearch(name: "%${search}%") {
                           id
                           name
                           description
@@ -243,7 +245,9 @@ export default {
       );
       if ("data" in response.data) {
         //console.log("yes");
-        this.menu.data = response.data.data.menus;
+        this.menu.data = response.data.data.menusearch;
+
+        this.menu.style.plachodervisibility = false;
         //console.log(response.data.data.categoryies);
         this.$store.commit("setcategory", response.data.data.categoryies);
       }

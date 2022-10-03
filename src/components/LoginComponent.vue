@@ -380,7 +380,9 @@ export default {
                   this.form.sinup.data
                 );
                 if (response.data.status == true) {
-                  localStorage.setItem("token", response.data.token);
+                  localStorage.setItem("token", response.data.data.token);
+                  this.$store.commit("SetUser", response.data.data.user);
+                  this.$store.commit("beauth");
                   //console.log("save token sin up ");
                   this.$router.push({
                     name: "home",

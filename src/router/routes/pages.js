@@ -43,6 +43,7 @@ export default [
   },
   {
     path: "/home",
+    alias: "/",
     name: "home",
     component: () => import("../../views/home/HomeView.vue"),
     meta: { title: "home" },
@@ -87,6 +88,12 @@ export default [
     path: "/user",
     name: "user",
     component: () => import("../../views/home/UserView.vue"),
+    beforeEnter: multiguard([auth_middle]),
+  },
+  {
+    path: "/search/:name",
+    name: "search",
+    component: () => import("../../views/home/SearchView.vue"),
     beforeEnter: multiguard([auth_middle]),
   },
 ];

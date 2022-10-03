@@ -249,7 +249,7 @@ export default {
   },
   async beforeMount() {
     this.get_product_data();
-    Scripts.animationloading(true);
+    Scripts.animationloading(false);
   },
   mounted() {
     Scripts.animationloading(true);

@@ -12,7 +12,7 @@ let toastMixin = Swal.mixin({
     popup: "colored-toast",
   },
   showConfirmButton: false,
-  timer: 2000,
+  timer: 4000,
   timerProgressBar: true,
   didOpen: (toast) => {
     toast.addEventListener("mouseenter", Swal.stopTimer);

@@ -55,12 +55,17 @@
                 ></router-link>
               </li>
             </ul>
-            <form class="d-flex position-relative" role="search">
+            <form
+              @submit.prevent="Search"
+              class="d-flex position-relative"
+              role="search"
+            >
               <input
                 class="form-control me-2 search-input"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                v-model="search"
               />
               <button
                 type="submit "
@@ -185,6 +190,11 @@ import script from "@/core/scripts/Scripts";
 import usejwt from "@/lib/auth/usejwt";
 
 export default {
+  data() {
+    return {
+      search: "",
+    };
+  },
   components: {
     SwitchButton,
   },
@@ -203,6 +213,13 @@ export default {
     },
   },
   methods: {
+    Search() {
+      console.log(this.$route);
+      this.$router.push({
+        name: "search",
+        params: { name: this.search },
+      });
+    },
     async logout() {
       script.animationloading(true);
       //console.log("make logout");
